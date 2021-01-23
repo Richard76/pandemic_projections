@@ -16,21 +16,31 @@ import datetime
 today = date.today()
 
 usa_population = 331000000
-usa_infected = 25410000 # https://www.worldometers.info/coronavirus/
+usa_infected = 25410000 # People Infected So Far - https://www.worldometers.info/coronavirus/ 
 
-usa_vaccinations = 19107000 # https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
-usa_vaccinated = usa_vaccinations / 2
+usa_vaccinations = 19107000 # Vaccinations So Far - https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
+usa_vaccinated = usa_vaccinations / 2 # People Vaccinated so far
 
 
 # What I am estimating
 #####################################
 
-
+# daily infections
 usa_infections_daily = 192000 # yesterdays infections
-usa_vaccinations_daily = 975540 # yesterdays shots https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
 
-usa_infections_vaccinations_needed = 0.90
+# daily vaccinated
+usa_vaccinations_daily = 975540 # yesterdays shots https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
+usa_vaccinated_daily = usa_vaccinations_daily / 2
+
+
+
+#### to add to v2 of the model
+#################################
+
+
+usa_infections_vaccinations_needed = 0.90 # % of people needing to be infected or vaccinated
 vaccine_effectiveness = 0.90
+usa_vaccine_immunity_daily = usa_vaccinated_daily * vaccine_effectiveness
 
 immunity_time_from_infection = 180 # time in days
 immunity_time_from_vaccination = 180 # time in days
@@ -53,7 +63,7 @@ plc = "{:,}".format(usa_people_left)
 print(f"{plc} people will need to be vaccinated or infected before the pandemic is over")
 
 # 3. How many people are getting vaccinated or infected per day
-infected_or_vaccinated_per_day = usa_infections_daily + usa_vaccinations_daily
+infected_or_vaccinated_per_day = usa_infections_daily + usa_vaccine_immunity_daily
 
 # 4. Estimate how many days it will take at this rate
 days_until_pandemic_over = usa_people_left / infected_or_vaccinated_per_day
