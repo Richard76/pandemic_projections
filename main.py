@@ -39,11 +39,19 @@ usa_infections_vaccinations_needed = 0.90 # % of people needing to be infected o
 
 
 
-#### Not added to the model yet - to add to v2 of the model later
-###################################################################
+#### Not added to the model yet - to add to later and better versions?
+######################################################################
 
+# 1. Add how long people are immune based on infection or vaccination
 immunity_time_from_infection = 180 # time in days
 immunity_time_from_vaccination = 180 # time in days
+
+# 2. Add the effects of a new mutation that is more contagious
+
+# 3. Add the effects of a new mutation that is completely immune to the vaccine
+
+# 4. Add the effects of a new mutation that is less immune to the vaccine
+
 
 
 
