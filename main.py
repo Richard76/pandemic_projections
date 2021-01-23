@@ -65,25 +65,31 @@ print(f"The Date that the Pandemic is expected to be over is: {date_pandemic_ove
 
 # Calculate how many people infected, vaccinated, & untouched
 
-# 1. How many infected?
+# 1. How many will be infected by the end of the pandemic?
+print(" ") # print a blank lines
 
-usa_infected_proj = round(usa_infected + days_until_pandemic_over * usa_infections_daily)
-usaip = "{:,}".format(usa_infected_proj)
-print(f"We project {usaip} total infections in the USA by {date_pandemic_over}")
+usa_infected_proj = round(usa_infected + (days_until_pandemic_over * usa_infections_daily))
+usa_ip = "{:,}".format(usa_infected_proj)
+print(f"We project {usa_ip} total people infected in the USA by {date_pandemic_over}")
 
-usa_infections_to_go = round(usa_infected_proj - usa_infected)
-print(f"Thats {usa_infected_proj} more people infected by {date_pandemic_over}")
 
+# 2. How many people will be vaccinated by the end of the pandemic?
+usa_vaccinated_proj = round(usa_vaccinated + days_until_pandemic_over * usa_vaccinations_daily)
+usa_vp = "{:,}".format(usa_vaccinated_proj)
+print(f"We project {usa_vp} total people vaccinated in the USA by {date_pandemic_over}")
+
+
+# 3. How many people will be untouched by the end of the pandemic?
+usa_people_untouched_proj = round(usa_population - usa_infected_proj - usa_vaccinated_proj)
+usa_up = "{:,}".format(usa_people_untouched_proj)
+print(f"We project {usa_up} total people untouched by the virus or a vaccine in the USA by {date_pandemic_over}")
+
+# 4. Do the 3 numbers above total the us population like it should? (Yes)
+# print(usa_population)
+# print(usa_infected_proj + usa_vaccinated_proj + usa_people_untouched)
 
 
 
 # Output
 ################
 
-print(f"The Date that the Pandemic is expected to be over is: {date_pandemic_over}")
-
-'''
-name = 'Tushar'
-age = 23
-print(f"Hello, My name is {name} and I'm {age} years old.")
-'''
