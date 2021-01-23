@@ -32,15 +32,17 @@ usa_infections_daily = 192000 # yesterdays infections
 usa_vaccinations_daily = 975540 # yesterdays shots https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
 usa_vaccinated_daily = usa_vaccinations_daily / 2
 
+vaccine_effectiveness = 0.90 # just a guess
+usa_vaccine_immunity_daily = usa_vaccinated_daily * vaccine_effectiveness
+
+
+
 
 
 #### to add to v2 of the model
 #################################
 
-
 usa_infections_vaccinations_needed = 0.90 # % of people needing to be infected or vaccinated
-vaccine_effectiveness = 0.90
-usa_vaccine_immunity_daily = usa_vaccinated_daily * vaccine_effectiveness
 
 immunity_time_from_infection = 180 # time in days
 immunity_time_from_vaccination = 180 # time in days
@@ -54,8 +56,19 @@ immunity_time_from_vaccination = 180 # time in days
 # Calculate when the pandemic will be over
 print(" ") # print a blank line
 
-# 1. People that need to be infected or vaccinated for the pandemic to be over
-usa_population_needed = usa_infections_vaccinations_needed * usa_population
+# 1. Total # of people that have been infected or vaccinated so far?
+usa_population_infected_immune = round(usa_infected + usa_vaccinated)
+usii = "{:,}".format(usa_population_infected_immune)
+print(f"{usii} people have either been infected or vaccinated so far")
+
+# 2. Total # People that need to be infected or vaccinated for the pandemic to be over
+usa_population_needed = round(usa_infections_vaccinations_needed * usa_population)
+usn = "{:,}".format(usa_population_needed)
+print(f"{usn} people will need to be vaccinated or infected before the pandemic is over")
+
+# 3. Calculate how many people still need to be infected or vaccinated
+people_left = usa_population_needed - usa_population_infected_immune
+print(f"That means {people_left} people will need to be vaccinated or infected before the pandemic is over")
 
 # 2. How many people left to get?
 usa_people_left = round(usa_population_needed - usa_infected - (vaccine_effectiveness * usa_vaccinated))
