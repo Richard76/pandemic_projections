@@ -16,10 +16,10 @@ today = date.today()
 print("Today's date:", today)
 
 usa_population = 331000000
-usa_infected = 25494983 # People Infected So Far - https://www.worldometers.info/coronavirus/ 
-usa_deaths = 426356
+usa_infected = 25559937 # People Infected So Far - https://www.worldometers.info/coronavirus/ 
+usa_deaths = 427587
 
-usa_vaccinations = 19107000 # Vaccinations So Far - https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
+usa_vaccinations = 19107959 # Vaccinations So Far - https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
 usa_vaccinated = usa_vaccinations / 2 # People Vaccinated so far
 
 
@@ -27,7 +27,7 @@ usa_vaccinated = usa_vaccinations / 2 # People Vaccinated so far
 #####################################
 
 # daily infections
-usa_infections_daily = 200000 # yesterdays infections
+usa_infections_daily = 195243 # yesterdays infections
 
 # daily vaccinated
 usa_vaccinations_daily = 975540 # yesterdays shots https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
