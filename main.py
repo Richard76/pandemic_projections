@@ -181,6 +181,8 @@ print(f"Your changes of not being infected and not being vaccinated by {date_pan
 #### Part 2 - Make the model Better
 ######################################################################
 
+# 0. What percentage of infections are detected?
+
 # 1. Take into account that the vaccine is not 100% effective
 vaccine_effectiveness = 0.90 # just a guess
 usa_vaccine_immunity_daily = usa_vaccinated_daily * vaccine_effectiveness
