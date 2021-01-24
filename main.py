@@ -99,7 +99,8 @@ print(f"The Pandemic should be done by: {date_pandemic_over}")
 
 # Goal 2: Estimate how many people infected, dead, vaccinated, & untouched
 print(" ") # print a blank lines
-print("Goal 2: Estimate how many people infected, vaccinated, & untouched?") 
+print("Goal 2: Estimate how many people infected, vaccinated, & untouched?")
+print(" ")
 
 
 # 1. How many will be infected by the end of the pandemic?
@@ -143,12 +144,26 @@ print(f"We project {usa_up} total people untouched by the virus or a vaccine in 
 
 
 
-# Goal 3 - What are your odds?
+# Goal 3 - What are your odds going forward?
+print(" ")
+print(f"Goal 3: As of {today}, calculate someones odds going forward: ")
+print(" ")
 
-print(f"As of {today}, here are your odds going forward")
+
+
+
+# Stuff below here does not work yet!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
 
 # 1. Chance of being vaccinated
-odds_vaccinated = 0.3
+people_to_be_vaccinated = usa_vaccinations_daily * days_until_pandemic_over
+odds_vaccinated = round(people_to_be_vaccinated / (usa_population_needed), 1)
+print(odds_vaccinated)
 
 # 2. Chance of not being vaccinated and not being infected
 odds_other = 0.2
