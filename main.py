@@ -6,7 +6,8 @@ Goal: Predict the end of the Coronavirus pandemic for each country
 '''
 
 # imports
-from datetime import date
+import datetime
+# from datetime import date
 
 
 
@@ -33,7 +34,7 @@ usa_infections_daily = 195243 # yesterdays infections
 usa_vaccinations_daily = 975540 # yesterdays shots https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
 usa_vaccinated_daily = usa_vaccinations_daily / 2
 vacc_rate_increase = 0 # percent that the daily number of vaccinations increases by
-usa_vaccinated_daily = usa_vaccinated_daily * (1 + (vacc_rate_increase / 100))
+# usa_vaccinated_daily = usa_vaccinated_daily * (1 + (vacc_rate_increase / 100))
 
 # % of people needing to be infected or vaccinated for pandemic to be over
 usa_infections_vaccinations_needed = 0.90 
@@ -83,7 +84,7 @@ print(f"That means {pl} people still need to be vaccinated or infected")
 
 
 # 6. How many people are getting vaccinated or infected per day?
-infected_or_vaccinated_per_day = round(usa_infections_daily + usa_vaccine_immunity_daily)
+infected_or_vaccinated_per_day = round(usa_infections_daily + usa_vaccinated_daily)
 ivpd = "{:,}".format(infected_or_vaccinated_per_day)
 print(f"There are {ivpd} people getting infected or vaccinated per day")
 
@@ -160,15 +161,15 @@ print(" ")
 
 
 
-# 1. Chance of being vaccinated
+# 1. Chance of being vaccinated by end of the pandemic
 people_to_be_vaccinated = (usa_vaccinations_daily / 2) * days_until_pandemic_over
-odds_vaccinated = 100 * round(people_to_be_vaccinated / people_left, 1)
+odds_vaccinated = 100 * round(people_to_be_vaccinated / (people_left + (usa_population / 10)), 1)
 print(f"Your chances of being vaccinated by {date_pandemic_over} are: {odds_vaccinated} %")
 
 
-# 2. Chance of getting infected 
+# 2. Chance of getting infected by the end of the pandemic
 people_to_be_infected = usa_infections_daily * days_until_pandemic_over
-odds_infected = 100 * round(people_to_be_infected / people_left, 1)
+odds_infected = 100 * round(people_to_be_infected / (people_left + (usa_population / 10)), 1)
 print(f"Your chances of being infected by {date_pandemic_over} are {odds_infected} % ")
 
 
@@ -182,10 +183,12 @@ print(f"Your changes of not being infected and not being vaccinated by {date_pan
 ######################################################################
 
 # 0. What percentage of infections are detected?
+pct_infections_detected
+# whats the effect of getting the vaccine after being infected?
 
 # 1. Take into account that the vaccine is not 100% effective
 vaccine_effectiveness = 0.90 # just a guess
-usa_vaccine_immunity_daily = usa_vaccinated_daily * vaccine_effectiveness
+# usa_vaccine_immunity_daily = usa_vaccinated_daily * vaccine_effectiveness
 
 # 2. Take into account either the virus becomes more contagious or vaccine distribution starts going faster
 virus_speed_up_rate = 1
