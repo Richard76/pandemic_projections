@@ -27,7 +27,7 @@ usa_vaccinated = usa_vaccinations / 2 # People Vaccinated so far
 #####################################
 
 # daily infections
-usa_infections_daily = 192000 # yesterdays infections
+usa_infections_daily = 200000 # yesterdays infections
 
 # daily vaccinated
 usa_vaccinations_daily = 975540 # yesterdays shots https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html
@@ -99,7 +99,7 @@ print(f"The Pandemic should be done by: {date_pandemic_over}")
 
 # Goal 2: Estimate how many people infected, dead, vaccinated, & untouched
 print(" ") # print a blank lines
-print("Goal 2: Estimate how many people infected, vaccinated, & untouched?")
+print("Goal 2: Estimate how many people infected, dead, vaccinated, & untouched?")
 print(" ")
 
 
@@ -161,21 +161,21 @@ print(" ")
 
 
 # 1. Chance of being vaccinated
-people_to_be_vaccinated = usa_vaccinations_daily * days_until_pandemic_over
-odds_vaccinated = round(people_to_be_vaccinated / (usa_population_needed), 1)
-print(odds_vaccinated)
+people_to_be_vaccinated = (usa_vaccinations_daily / 2) * days_until_pandemic_over
+odds_vaccinated = 100 * round(people_to_be_vaccinated / people_left, 1)
+print(f"Your chances of being vaccinated by {date_pandemic_over} are: {odds_vaccinated} %")
 
-# 2. Chance of not being vaccinated and not being infected
-odds_other = 0.2
 
-# 3. Chance of getting infected and not dying
-odds_infected = 0.5
-odds_infected_live = round(100 * (odds_infected * (1 - virus_mortality_rate)), 2)
-print(f"Your chances of getting infected and not dying are {odds_infected_live} % ")
+# 2. Chance of getting infected 
+people_to_be_infected = usa_infections_daily * days_until_pandemic_over
+odds_infected = 100 * round(people_to_be_infected / people_left, 1)
+print(f"Your chances of being infected by {date_pandemic_over} are {odds_infected} % ")
 
-# 4. Change of getting infected and dying
-odds_infected_death = round(100 * (odds_infected * virus_mortality_rate), 2)
-print(f"Your chances of getting infected and dying are {odds_infected_death} % ")
+
+# 3. Chance of not being vaccinated and not being infected by the end of the pandemic
+odds_nothing = 100 - odds_vaccinated - odds_infected
+print(f"Your changes of not being infected and not being vaccinated by {date_pandemic_over} are {odds_nothing} %")
+
 
 
 #### Part 2 - Make the model Better
